@@ -17,7 +17,10 @@ contract AidTrace {
 }
 
 contract DonationEvent {
-
+        event LogContribute(uint _approvedCount);
+        event LogRequestCreated(string _description, uint _value, address _recipient);
+        event LogRequestApproved(uint _id, uint _approvalCount);
+        event LogFinalizedRequest(uint amount, uint _id);
 
     struct Request {
         string description;
@@ -48,9 +51,10 @@ contract DonationEvent {
 
     function contribute() public payable {
         require(msg.value > minimumContribution);
-
+        
         approvers[msg.sender] = true;
         approversCount++;
+        emit LogContribute(approversCount);
     }
 
     function createRequest(string memory description , uint value, address recipient) public restricted {
@@ -61,7 +65,7 @@ contract DonationEvent {
            complete: false,
            approvalCount: 0
         });
-
+        emit LogRequestCreated(description,value,recipient);
         requests.push(newRequest);
     }
 
@@ -70,19 +74,21 @@ contract DonationEvent {
 
         require(approvers[msg.sender]);
         require(!request.approvals[msg.sender]);
-
+        
         request.approvals[msg.sender] = true;
         request.approvalCount++;
+        emit LogRequestApproved(id, request.approvalCount);
     }
 
-    function finalizeRequest(uint index) public restricted {
-        Request storage request = requests[index];
+    function finalizeRequest(uint id) public restricted {
+        Request storage request = requests[id];
 
         require(request.approvalCount > (approversCount / 2));
         require(!request.complete);
-
+        
         msg.sender.transfer(request.value);
         request.complete = true;
+        emit LogFinalizedRequest(address(msg.sender).balance, id);
     }
 
     function getSummary() public view returns (
