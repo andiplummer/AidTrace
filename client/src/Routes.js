@@ -4,6 +4,7 @@ import Home from './components/Home'
 import CreateEventForm from './components/CreateEventForm';
 import Events from './components/Events';
 import SingleEvent from './components/SingleEvent';
+import Donate from './components/Donate';
 
 const Routes = () => {
   return (
@@ -18,6 +19,8 @@ const Routes = () => {
           <Route path="/create-event" component={CreateEventForm}/>
           <Route path="/event" component={SingleEvent}/>
           <Route path="/events" component={Events}/>
+          <Route path="/donate" component={Donate}/>
+          <Route path="/Withdraw" component={Donate}/>
           <Route path="/transactionsummary" />
           <Route path="/singleevent" />
         </Switch>
