@@ -1,11 +1,16 @@
 import React from 'react'
-import Nav from './Nav'
+import Wallet from './Wallet'
+import ReactModal from 'react-modal'
 
 const Home = () => {
   return (
-    <div>
-      <Nav />
-      <h1>Home page</h1>
+    <div class="home">
+      <div>
+        <h1>Home page</h1>
+      </div>
+      {/* <div id="walletContainer">
+        <Wallet />
+      </div> */}
     </div>
   )
 }
