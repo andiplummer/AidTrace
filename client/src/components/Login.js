@@ -3,11 +3,12 @@ import Nav from './Nav'
 import Torus from "@toruslabs/torus-embed";
 import Web3 from "web3";
 
-
 const Login = async () => {
   const torus = new Torus({
     buttonPosition: "top-left" // default: bottom-left
   });
+
+  
   await torus.init({
     buildEnv: "production", // default: production
     enableLogging: true, // default: false
