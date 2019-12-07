@@ -1,9 +1,13 @@
 import React from 'react';
 
-const SingleEvent = props => {
+// test data:
+const events = [{name: 'Fire in California', min: 2, address: '0x000001'}, {name: 'Fire in California', min: 2, address: '0x000001'}]
+
+const SingleEvent = () => {
+
   return (
     <div>
-      {this.props.events.map((event, idx) => {
+      {events.map((event, idx) => {
         return (
           <div key={idx}>
             <h2>{event.name}</h2>
