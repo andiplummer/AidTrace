@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -21,6 +22,12 @@
   color: #09d3ac;
 }
 
+.Card-Container{
+  display: flex;
+  align-content: flex-start;
+  max-width: 100;
+  max-height: 300;
+}
 nav {
   height: 50px;
   display: flex;
