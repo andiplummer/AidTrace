@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import getWeb3 from "../getWeb3";
-import SimpleStorageContract from "../contracts/SimpleStorage.json";
+import AidTrace from "../contracts/AidTrace.json";
 
 class CreateEventForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
-      address: '',
+      address: '', // message sender's address
       min: '',
       desc: '',
       message: 'Please enter and submit event details.',
@@ -29,9 +29,9 @@ class CreateEventForm extends Component {
 
         // Get the contract instance.
         const networkId = await web3.eth.net.getId();
-        const deployedNetwork = SimpleStorageContract.networks[networkId];
+        const deployedNetwork = AidTrace.networks[networkId];
         const instance = new web3.eth.Contract(
-          SimpleStorageContract.abi,
+          AidTrace.abi,
           deployedNetwork && deployedNetwork.address,
         );
 

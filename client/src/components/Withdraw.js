@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "./Navbar"
-import SimpleStorageContract from "../contracts/SimpleStorage.json";
+import AidTrace from "../contracts/AidTrace.json";
 import getWeb3 from "../getWeb3";
 
 class Withdraw extends Component {
@@ -29,9 +29,9 @@ class Withdraw extends Component {
 
         // Get the contract instance.
         const networkId = await web3.eth.net.getId();
-        const deployedNetwork = SimpleStorageContract.networks[networkId];
+        const deployedNetwork = AidTrace.networks[networkId];
         const instance = new web3.eth.Contract(
-          SimpleStorageContract.abi,
+          AidTrace.abi,
           deployedNetwork && deployedNetwork.address,
         );
 

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "../contracts/SimpleStorage.json";
+import AidTrace from "../contracts/AidTrace.json";
 import getWeb3 from "../getWeb3";
 
 class Donate extends Component {
@@ -17,6 +17,8 @@ class Donate extends Component {
     this.handleChange = this.handleChange.bind(this)
     }
 
+
+
     componentDidMount = async () => {
       try {
         // Get network provider and web3 instance.
@@ -27,9 +29,9 @@ class Donate extends Component {
 
         // Get the contract instance.
         const networkId = await web3.eth.net.getId();
-        const deployedNetwork = SimpleStorageContract.networks[networkId];
+        const deployedNetwork = AidTrace.networks[networkId];
         const instance = new web3.eth.Contract(
-          SimpleStorageContract.abi,
+          AidTrace.abi,
           deployedNetwork && deployedNetwork.address,
         );
 
@@ -55,7 +57,7 @@ class Donate extends Component {
       event.preventDefault();
       this.setState({message: 'Waiting on transaction success...'})
 
-      await this.state.contract.methods.deposit(this.state.address).send({ from: this.state.accounts[0], value: this.state.web3.utils.toWei(this.state.ETH, 'ether')});
+      await this.state.contract.methods.contribute(this.state.address).send({ from: this.state.accounts[0], value: this.state.web3.utils.toWei(this.state.ETH, 'ether')});
       this.setState({
         ETH: '',
         address: '',
