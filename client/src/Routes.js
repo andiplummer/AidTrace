@@ -1,8 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home'
-import Login from './components/Wallet'
-import Signup from './components/Signup'
 import Nav from './components/Nav'
 
 const Routes = () => {
@@ -12,8 +10,6 @@ const Routes = () => {
       <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
           <Route path="/donorsignup" />
           <Route path="/nonprofitsignup" />
           <Route path="/events" />

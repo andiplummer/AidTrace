@@ -17,7 +17,7 @@ const web3Obj = {
         host: 'HTTP://127.0.0.1:7545',
         networkName: 'dev'
       },
-      enableLogging: true
+      enableLogging: false
     })
     await torus.login()
     web3Obj.setweb3(torus.provider)
@@ -30,17 +30,6 @@ class Wallet extends React.Component {
     this.state = {
       account: '',
       balance: ''
-    }
-  }
-
-  
-  componentDidMount() {
-    const isTorus = sessionStorage.getItem('pageUsingTorus')
-
-    if (isTorus) {
-      web3Obj.initialize().then(() => {
-        this.setStateInfo()
-      })
     }
   }
 
@@ -67,12 +56,19 @@ class Wallet extends React.Component {
   render() {
     return (
       <div class="wallet">
-          {/* {
-            this.state.account ? null : <button onClick={this.enableTorus}>Login</button>
-          } */}
-          {/* <button onClick={this.enableTorus}>Enable Torus</button> */}
-      <div>Account: {this.state.account.slice(0, 5)}</div>
-      <div>Balance: {this.state.balance}</div>
+          {
+            this.state.account ? 
+            <div class="accountInfo">
+              <div>Account: {this.state.account.slice(0, 5)}</div>
+              <div>Balance: {this.state.balance}</div>
+            </div>
+          
+            : 
+            
+            <div>
+              <button onClick={this.enableTorus}>Login</button>
+            </div>
+          }      
       </div>
     )
   }
