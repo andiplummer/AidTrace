@@ -32,17 +32,6 @@
       "type": "function"
     }
   ],
-<<<<<<< HEAD
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/malloryleewong/Desktop/my-projects/AidTrace/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/malloryleewong/Desktop/my-projects/AidTrace/contracts/SimpleStorage.sol\":{\"keccak256\":\"0x27a650f3e92e6057b3f1239be6fc335fb57d75c570d7274d8902eb0b04e48014\",\"urls\":[\"bzz-raw://5921ad02b314eeb6ba35cc059023a56d28a8aa9133076210b9df43f54824308d\",\"dweb:/ipfs/QmZFS95cqTQQE5XP11DAxkYYaeiQPSSfquyhhc2Df3v36J\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820ed79e34d63e912d85dcbaebce1170b223d26ad2f341fc452db80313caae9017564736f6c634300050c0032",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820ed79e34d63e912d85dcbaebce1170b223d26ad2f341fc452db80313caae9017564736f6c634300050c0032",
-  "sourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;",
-  "deployedSourceMap": "25:176:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:176:1;;;;;;;;;;;;;;;;;;;;;;;;72:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;72:53:1;;;;;;;;;;;;;;;;;:::i;:::-;;129:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;72:53;119:1;106:10;:14;;;;72:53;:::o;129:70::-;165:4;184:10;;177:17;;129:70;:::o",
-  "source": "pragma solidity ^0.5.0;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
-  "sourcePath": "/Users/malloryleewong/Desktop/my-projects/AidTrace/contracts/SimpleStorage.sol",
-  "ast": {
-    "absolutePath": "/Users/malloryleewong/Desktop/my-projects/AidTrace/contracts/SimpleStorage.sol",
-=======
   "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/leefaria/Documents/Code/AidTrace/AidTrace/contracts/AidTrace.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/leefaria/Documents/Code/AidTrace/AidTrace/contracts/AidTrace.sol\":{\"keccak256\":\"0xdf1eee8c2bc57bc29880b7f0cda2dde1e8e7cfba1e2e64e72a7a37c9dd8a324a\",\"urls\":[\"bzz-raw://b0ab2f17657b4753e2b029e474ddc872b14b4c28ef7b7db03e34c79a3087418a\",\"dweb:/ipfs/QmbVkdgzHPT66qSGJkk9NXzdmn3teDYw62QQSuh15NATAK\"]}},\"version\":1}",
   "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820bc301ca10eb341392ed0ba64e32657effdccfa89fa3d16aa21cf0799e78fca2264736f6c634300050c0032",
   "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820bc301ca10eb341392ed0ba64e32657effdccfa89fa3d16aa21cf0799e78fca2264736f6c634300050c0032",
@@ -52,7 +41,6 @@
   "sourcePath": "/Users/leefaria/Documents/Code/AidTrace/AidTrace/contracts/AidTrace.sol",
   "ast": {
     "absolutePath": "/Users/leefaria/Documents/Code/AidTrace/AidTrace/contracts/AidTrace.sol",
->>>>>>> master
     "exportedSymbols": {
       "AidTrace": [
         57
@@ -303,28 +291,9 @@
             "visibility": "public"
           }
         ],
-<<<<<<< HEAD
-        "scope": 80,
-        "src": "25:176:1"
-      }
-    ],
-    "src": "0:202:1"
-  },
-  "legacyAST": {
-    "absolutePath": "/Users/malloryleewong/Desktop/my-projects/AidTrace/contracts/SimpleStorage.sol",
-    "exportedSymbols": {
-      "SimpleStorage": [
-        79
-      ]
-    },
-    "id": 80,
-    "nodeType": "SourceUnit",
-    "nodes": [
-=======
         "scope": 286,
         "src": "25:176:0"
       },
->>>>>>> master
       {
         "id": 23,
         "literals": [
@@ -7176,27 +7145,9 @@
     "name": "solc",
     "version": "0.5.12+commit.7709ece9.Emscripten.clang"
   },
-  "networks": {
-    "5777": {
-      "events": {},
-      "links": {},
-      "address": "0x8A2312adF4F0DC98Afd8465C03853A6B22Ad524c",
-      "transactionHash": "0x02c1fc2562ca97e45acd7919832bcfeb7203eeb9223b9c83d7bddc615971804d"
-    }
-  },
-<<<<<<< HEAD
+  "networks": {},
   "schemaVersion": "3.0.18",
-  "updatedAt": "2019-12-07T18:59:45.579Z",
-=======
-<<<<<<< HEAD
-  "schemaVersion": "3.0.19",
-  "updatedAt": "2019-12-07T18:48:12.481Z",
->>>>>>> master
-  "networkType": "ethereum",
-=======
-  "schemaVersion": "3.0.18",
-  "updatedAt": "2019-12-07T19:51:32.360Z",
->>>>>>> leebranch
+  "updatedAt": "2019-12-07T19:52:55.637Z",
   "devdoc": {
     "methods": {}
   },
