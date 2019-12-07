@@ -46,12 +46,23 @@ class Events extends Component {
 
       // with test object instead of actual contract
 
-      const eventsListTest = this.state.contractTest.events.reduce((accum, event) => {
-        accum.push(event)
-        return accum
-      }, [])
+      // const eventsListTest = this.state.contractTest.events.reduce((accum, event) => {
+      //   accum.push(event)
+      //   return accum
+      // }, [])
+
+      console.log('events on test obj', this.state.contractTest.events)
+
+      const eventsListTest = []
+      for (let i = 0; i < this.state.contractTest.events; i++) {
+        const event = this.state.contractTest.events[i]
+        eventsListTest.push(event)
+      }
+      console.log('eventsLIstTEst', eventsListTest)
 
       this.setState({events: eventsListTest})
+
+      console.log('EVENTS', this.state.events)
 
     } catch (error) {
       alert(
@@ -68,7 +79,7 @@ class Events extends Component {
         {this.state.events.map((event, idx) => {
           return (
             <div key={idx}>
-              <SingleEvent key={idx} event={event} />
+              <SingleEvent key={idx} event={this.state.events} />
             </div>
           );
         })}
