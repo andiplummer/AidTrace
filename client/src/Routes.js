@@ -1,6 +1,8 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './components/Home'
+import Login from './components/Login'
+import Signup from './components/Signup'
 
 const Routes = () => {
   return (
@@ -8,8 +10,8 @@ const Routes = () => {
       <div id="root">
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/login" />
-          <Route path="/signup" />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
           <Route path="/donorsignup" />
           <Route path="/nonprofitsignup" />
           <Route path="/events" />
