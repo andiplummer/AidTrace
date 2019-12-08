@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/react-fontawesome": "^0.1.8",
+    "@material-ui/core": "^4.7.2",
     "@toruslabs/torus-embed": "^0.2.9",
     "ganache-cli": "^6.7.0",
+    "ionicons": "^4.6.3",
     "react": "16.11.0",
     "react-dom": "16.11.0",
+    "react-modal": "^3.11.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
     "web3": "1.2.2"
@@ -31,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@iconify/icons-fa-brands": "^1.0.8",
+    "@iconify/icons-mdi": "^1.0.35",
+    "@iconify/react": "^1.1.1"
   }
 }

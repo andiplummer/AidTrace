@@ -18,15 +18,22 @@ class Nav extends React.Component {
   constructor() {
     super()
     this.state = {
-      modalOpen: false
+      modalOpen: false,
+      donateOpen: false
     }
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.closeDonate = this.closeDonate.bind(this)
+    this.openDonate = this.openDonate.bind(this)
   }
 
   openModal() {
     this.setState({modalOpen: true});
+  }
+
+  openDonate() {
+    this.setState({donateOpen: true})
   }
 
   afterOpenModal() {
@@ -37,6 +44,11 @@ class Nav extends React.Component {
     this.setState({modalOpen: false});
   }
 
+  closeDonate() {
+    this.setState({donateOpen: false})
+
+  }
+
   render() {
   return (
       <nav>
@@ -44,6 +56,7 @@ class Nav extends React.Component {
           <Link to="/"><h1 id="header">AidTrace</h1></Link>
         </div>
         <div>
+          <button onClick={this.openDonate}>Donate</button>
           <button onClick={this.openModal}>Add Event</button>
         </div>
         <Modal
@@ -53,16 +66,41 @@ class Nav extends React.Component {
           style={customStyles}
           contentLabel="Add an event"
         >
-          <div>
+          <div className="donationHeader">
             <h2 ref={subtitle => this.subtitle = subtitle}>Add a new event</h2>
-            <button onClick={this.closeModal}>close</button>
+            <button onClick={this.closeModal}>X</button>
           </div>
-          <form>
-            <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
+          <form className="form">
+            <input 
+              placeholder="Event name"
+             />
+            <input 
+              placeholder="Miniumum contribution"
+            />
+            <button>Add event</button>
+          </form>
+        </Modal>
+        <Modal
+          isOpen={this.state.donateOpen}
+          onRequestClose={this.closeDonate}
+          style={customStyles}
+          contentLabel="Add an event"
+        >
+          <div className="donationHeader">
+            <h2 ref={subtitle => this.subtitle = subtitle}>Make a donation</h2>
+            <button onClick={this.closeDonate}>X</button>
+          </div>
+          <form className="form">
+            <input 
+              placeholder="Event name"
+             />
+            <input 
+              placeholder="Minimum contribution"
+            />
+            <input
+              placeholder="Charity address"
+            />
+            <button>Donate</button>
           </form>
         </Modal>
       </nav>
