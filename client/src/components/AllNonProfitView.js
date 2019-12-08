@@ -68,7 +68,7 @@ let [votes, setVotes] = React.useState(0)
         {posts.map(post => (
           <Grid item key={post.id} class="grid" id="card">
             <Card>
-              <CardActionArea>
+              <CardActionArea class="card-actions">
                 <CardMedia
                   class="card-image"
                   component="img"

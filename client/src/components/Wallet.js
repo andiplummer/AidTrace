@@ -1,31 +1,5 @@
 import React from 'react'
-import Nav from './Nav'
-import Torus from "@toruslabs/torus-embed";
-import Web3 from "web3";
-import ReactModal from "react-modal"
-import { Button } from "@material-ui/core"
-import "../App.css"
-
-const web3Obj = {
-  web3: new Web3(),
-  setweb3: function(provider) {
-    const web3Inst = new Web3(provider)
-    web3Obj.web3 = web3Inst
-    sessionStorage.setItem('pageUsingTorus', true)
-  },
-  initialize: async function() {
-    const torus = new Torus()
-    await torus.init({
-      network: {
-        host: 'HTTP://127.0.0.1:7545',
-        networkName: 'dev'
-      },
-      enableLogging: false
-    })
-    await torus.login()
-    web3Obj.setweb3(torus.provider)
-  }
-}
+import web3Obj from '../getWeb3'
 
 class Wallet extends React.Component {
   constructor() {
@@ -33,6 +7,16 @@ class Wallet extends React.Component {
     this.state = {
       account: '',
       balance: ''
+    }
+  }
+
+  componentDidMount() {
+    const isTorus = sessionStorage.getItem('pageUsingTorus')
+
+    if (isTorus) {
+      web3Obj.initialize().then(() => {
+        this.setStateInfo()
+      })
     }
   }
 
@@ -58,20 +42,21 @@ class Wallet extends React.Component {
 
   render() {
     return (
-      <div class="wallet">
+      <div className="wallet">
           {
-            this.state.account ? 
+            this.state.account ?
+
             <div class="accountInfo">
-              <div>Account: {this.state.account.slice(0, 5)}</div>
-              <div>Balance: {this.state.balance}</div>
+              <p>Account: {this.state.account.slice(0, 5)}</p>
+              <p>Balance: {this.state.balance}</p>
             </div>
-          
-            : 
-            
+
+            :
+
             <div>
               <button onClick={this.enableTorus}>Login</button>
             </div>
-          }      
+          }
       </div>
     )
   }
