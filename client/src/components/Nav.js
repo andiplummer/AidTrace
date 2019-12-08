@@ -19,13 +19,20 @@ class Nav extends React.Component {
     super()
     this.state = {
       modalOpen: false,
-      donateOpen: false
+      donateOpen: false,
+      ETH: '',
+      address: '',
+      message: 'Please submit donation details above.',
+      web3: null,
+      accounts: null,
+      contract: null
     }
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.closeDonate = this.closeDonate.bind(this)
     this.openDonate = this.openDonate.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   openModal() {
@@ -40,6 +47,12 @@ class Nav extends React.Component {
 
   }
 
+  handleChange(event) {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  }
+
   closeModal() {
     this.setState({modalOpen: false});
   }
@@ -47,6 +60,10 @@ class Nav extends React.Component {
   closeDonate() {
     this.setState({donateOpen: false})
 
+  }
+
+  onSubmit() {
+    console.log('state', this.state)
   }
 
   render() {
@@ -80,6 +97,7 @@ class Nav extends React.Component {
             <button>Add event</button>
           </form>
         </Modal>
+        
         <Modal
           isOpen={this.state.donateOpen}
           onRequestClose={this.closeDonate}
@@ -91,14 +109,22 @@ class Nav extends React.Component {
             <button onClick={this.closeDonate}>X</button>
           </div>
           <form className="form">
-            <input 
+            {/* <input 
               placeholder="Event name"
-             />
+              type="text"
+              name="name"
+              onChange={this.handleChange}
+              value={this.state.name}
+             /> */}
             <input 
               placeholder="Minimum contribution"
             />
             <input
               placeholder="Charity address"
+              type="text"
+              name="address"
+              onChange={this.handleChange}
+              value={this.state.address}
             />
             <button>Donate</button>
           </form>
