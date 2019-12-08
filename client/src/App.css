@@ -13,6 +13,7 @@ nav {
   align-items: center;
   background-color: #1b2136;
   padding-right: 50px;
+  z-index: 10;
 }
 
 nav h1 {
@@ -74,38 +75,41 @@ button:focus { outline:none }
   flex-direction: row;
 }
 
+#outerGrid {
+  width: 100%;
+}
+
 .grid-container {
   display: flex;
   flex-direction: row;
-  height: 100%;
-  width: 100%;
-  margin: 30px;
-}
-
-.grid {
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
-  margin: 20px;
-  align-content: stretch;
-  height: 100%;
+  align-content: flex-start;
+  align-items: stretch;
+  height: 80%;
+  margin-left: 10%;
+  padding-top: 150px;
+  z-index: 0;
 }
+#avatar {
+    align-items: 'center';
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
 
-.card-image {
-  width: 90%;
-  height: 100px
-}
 .card-actions{
-  display: flex;
-  flex-direction: row;
-  align-content: stretch;
   width: 100%;
   align-items: center;
+  z-index: 0;
 }
+
 .buttons {
   align-self: flex-start;
+    z-index: 0;
+
 }
+
 .up-vote {
   align-self: flex-start;
   display: flex;
@@ -116,6 +120,7 @@ button:focus { outline:none }
 .check-mark {
   align-self: flex-start;
 }
+
 #vote-number {
   margin: 1px;
   padding: 1px;
@@ -126,6 +131,7 @@ button:focus { outline:none }
   line-height: 1.5;
   letter-spacing: 0.00938em;
 }
+
 .path {
   width: 15%;
   align-self: flex-end;
@@ -133,14 +139,24 @@ button:focus { outline:none }
   margin: 30px;
   border: 30px;
 }
+
 .ethereum-icon {
    padding: 10px;
    height: 20px;
    width: 20px;
+   align-self: flex-end;
+}
+.card-header {
+  align-items: "center";
+  justify-content: "center";
+  display: flex;
 }
 #card {
   width: 300px;
   height: 300px;
+  border-radius: 35px;
+  margin: 20px;
+  align-self: "center";
 }
 
 .wallet button {

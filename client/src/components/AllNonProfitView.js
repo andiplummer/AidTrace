@@ -1,5 +1,5 @@
 import React, { useState }from "react";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Grid, Paper, Typography, Avatar } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -18,44 +18,44 @@ const posts = [
 
   {
     id: 1,
-    title: "My first post",
+    title: "World Food Programme",
     excerpt: "This is my first post with more content inside",
-    image: "https://media.globalcitizen.org/5d/95/5d951dce-6943-4c48-bc59-3b0607a947ad/wfp_logo.jpg"
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/World_Food_Programme_Logo_Simple.svg/200px-World_Food_Programme_Logo_Simple.svg.png"
   },
 
   {
     id: 2,
-    title: "My second post",
+    title: "All Hands and Hearts",
     excerpt: "This is my second post with more content inside",
-    image: "https://www.guidestar.org/ViewEdoc.aspx?eDocId=5256262&approved=True"
+    image: "https://upload.wikimedia.org/wikipedia/en/c/c2/All_Hands_And_Hearts_-_Smart_Response_new_logo_%282018%29.png"
   },
 
   {
     id: 3, 
-    title: "My third post",
+    title: "Direct Releif",
     excerpt: "This is my third post with more content inside",
-    image: "https://blog.qlik.com/assets/uploads/images/direct-relief.jpg"
+    image: "https://i1.wp.com/www.directrelief.org/wp-content/uploads/Direct-Relief-Logo-Square-Full.png?w=1192&crop=0%2C0px%2C100%2C1189px&ssl=1"
   },
 
   {
     id: 4,
-    title: "My fourth post",
+    title: "React International Inc.",
     excerpt: "This is my fourth post with more content inside",
-    image: "https://i2.wp.com/yourmovement.ca/wp-content/uploads/2013/12/thefacts.png?fit=289%2C170"
+    image: "http://www.blackberryreact.org/new1/media/REACT_color.gif"
   },
 
   {
     id: 5,
-    title: "My fifth post",
+    title: "Habitat for Humanity",
     excerpt: "This is my fifth post with more content inside",
-    image: "https://reactintl.org/wp-content/uploads/2017/10/cropped-REACT_LOGO_2018_header.png"
+    image: "https://over50andoverseas.com/wp-content/uploads/2018/11/habitat-for-humanity-logo.jpg"
   },
 
   {
     id: 6,
-    title: "My sixth post",
+    title: "American Red Cross",
     excerpt: "This is my sixth post with more content inside",
-    image: "https://ewscripps.brightspotcdn.com/dims4/default/3b23e40/2147483647/strip/true/crop/1024x576+0+54/resize/1280x720!/quality/90/?url=https%3A%2F%2Fmediaassets.ktvq.com%2Fcordillera-network%2Fwp-content%2Fuploads%2Fsites%2F6%2F2019%2F07%2F28160352%2F180917-F-ZZ000-1001.jpg"
+    image: "https://bloximages.newyork1.vip.townnews.com/mcdowellnews.com/content/tncms/assets/v3/editorial/2/a6/2a662eaa-a34e-11e9-8752-1f55e33a45f3/5d26453489900.image.jpg?resize=400%2C400"
   }
 ]
 
@@ -64,19 +64,11 @@ function AllNonProfitView(props) {
 let [votes, setVotes] = React.useState(0)
   return (
     <div class="grid-container">
-      <Grid class="grid">
         {posts.map(post => (
-          <Grid item key={post.id} class="grid" id="card">
-            <Card>
-              <CardActionArea class="card-actions">
-                <CardMedia
-                  class="card-image"
-                  component="img"
-                  alt="Contemplative Reptile"
-                  height="100%"
-                  image={post.image}
-                  title="Contemplative Reptile"
-                />
+          // <Grid id="cardContainer" item key={post.id}>
+            <Card id="card">
+              <CardActionArea>
+              <Avatar alt="Remy Sharp" src={post.image} id="avatar"/>
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                     {post.title}
@@ -94,15 +86,14 @@ let [votes, setVotes] = React.useState(0)
                     <Icon icon={chevronDown} />
                   </div>
                 </div>
-                <Icon icon={checkCircleOutline} class="check-mark"/>
-                <Icon icon={ethereumIcon} class="ethereum-icon"/>
+                <Icon icon={checkCircleOutline} class="check-mark" />
+                <Icon icon={ethereumIcon} class="ethereum-icon" />
               </CardActions>
             </Card>
-          </Grid>
+          // </Grid>
         ))}
-      </Grid>
     </div>
-  );
+  )
 }
 
 export default AllNonProfitView

@@ -16,7 +16,7 @@ const Routes = () => {
       <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/nonprofits" component={AllNonProfitView} />
+          <Route exact ="/nonprofits" component={AllNonProfitView} />
           <Route path="/donorsignup" />
           <Route path="/nonprofitsignup" />
           <Route path="/create-event" component={CreateEventForm}/>
