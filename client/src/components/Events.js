@@ -2,29 +2,9 @@ import React, { Component } from 'react';
 import getWeb3 from '../getWeb3';
 import AidTrace from '../contracts/AidTrace.json';
 import SingleEvent from './SingleEvent';
+import CreateEventForm from './CreateEventForm'
 // import Torus from "@toruslabs/torus-embed";
 // import Web3 from "web3";
-
-// const web3Obj = {
-//   web3: new Web3(),
-//   setweb3: function(provider) {
-//     const web3Inst = new Web3(provider)
-//     web3Obj.web3 = web3Inst
-//     sessionStorage.setItem('pageUsingTorus', true)
-//   },
-//   initialize: async function() {
-//     const torus = new Torus()
-//     await torus.init({
-//       network: {
-//         host: 'HTTP://127.0.0.1:7545',
-//         networkName: 'dev'
-//       },
-//       enableLogging: false
-//     })
-//     await torus.login()
-//     web3Obj.setweb3(torus.provider)
-//   }
-// }
 
 class Events extends Component {
   constructor() {
@@ -35,33 +15,17 @@ class Events extends Component {
       contract: null,
       events: [],
     };
-    // this.enableTorus = this.enableTorus.bind(this)
-    this.loadBlockchainData = this.loadBlockchainData.bind(this)
+    this.loadBlockchainData = this.loadBlockchainData.bind(this);
   }
 
-  // enableTorus = async () => {
-  //   try {
-  //     await web3Obj.initialize()
-  //     this.setState({web3: web3Obj})
-  //     console.log('this.state.web3 after enableTorus', this.state.web3)
-  //   } catch (error) {
-  //     console.error(error)
-  //   }
-  // }
-
   async componentDidMount() {
-    this.loadBlockchainData()
+    this.loadBlockchainData();
   }
 
   async loadBlockchainData() {
     try {
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
-
-      // get web3 instance made with Torus provider
-      // this.enableTorus()
-
-      // const web3 = this.state.web3
 
       // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
@@ -80,11 +44,15 @@ class Events extends Component {
       // Set list of existing events to the state.
       // error now because no events created yet so nothing in deployedEvents array yet
       // need to fix create event form first
-      const eventsList = await this.state.contract.methods.deployedEvents().call();
+      const eventsList = await this.state.contract.methods
+        .deployedEvents()
+        .call();
 
       // need to add in if event msg.sender address = company logged in, then render that company's events only
       for (var i = 1; i <= eventsList.length; i++) {
-        const event = await this.state.contract.methods.getDeployedEvents(i).call();
+        const event = await this.state.contract.methods
+          .getDeployedEvents(i)
+          .call();
         // if(event.)
         this.setState({
           events: [...this.state.events, event],
@@ -92,7 +60,6 @@ class Events extends Component {
       }
 
       console.log('this.state.events', this.state.events);
-
     } catch (error) {
       alert(`Failed to load web3, accounts, or contract.`);
       console.error(error);
@@ -102,14 +69,20 @@ class Events extends Component {
   render() {
     return (
       <div>
-        <h1>Events</h1>
-        {this.state.events.map((event, idx) => {
-          return (
-            <div key={idx}>
-              <SingleEvent key={idx} event={event} />
-            </div>
-          );
-        })}
+        <div>
+          <h1>Events</h1>
+          {this.state.events.map((event, idx) => {
+            return (
+              <div key={idx}>
+                <SingleEvent key={idx} event={event} />
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          <h2>Create new event</h2>
+          <CreateEventForm />
+        </div>
       </div>
     );
   }

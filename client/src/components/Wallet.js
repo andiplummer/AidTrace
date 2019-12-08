@@ -1,5 +1,4 @@
 import React from 'react'
-// import Nav from './Nav'
 import Torus from "@toruslabs/torus-embed";
 import Web3 from "web3";
 

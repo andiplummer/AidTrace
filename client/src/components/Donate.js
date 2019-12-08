@@ -17,8 +17,6 @@ class Donate extends Component {
     this.handleChange = this.handleChange.bind(this)
     }
 
-
-
     componentDidMount = async () => {
       try {
         // Get network provider and web3 instance.

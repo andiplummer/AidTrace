@@ -1,5 +1,5 @@
 import Web3 from "web3";
-// import Torus from "@toruslabs/torus-embed";
+import Torus from "@toruslabs/torus-embed";
 
 const getWeb3 = () =>
   new Promise((resolve, reject) => {
@@ -38,30 +38,4 @@ const getWeb3 = () =>
 
 export default getWeb3;
 
-// async function getWeb3 () {
-//   new Promise((resolve, reject) => {
-//     // Wait for loading completion to avoid race conditions with web3 injection timing.
-//     window.addEventListener("load", async () => {
-//       const web3Obj = {
-//         web3: new Web3(),
-//         setweb3: function(provider) {
-//           const web3Inst = new Web3(provider)
-//           web3Obj.web3 = web3Inst
-//           sessionStorage.setItem('pageUsingTorus', true)
-//         },
-//         initialize: async function() {
-//           const torus = new Torus()
-//           await torus.init({
-//             network: {
-//               host: 'HTTP://127.0.0.1:7545',
-//               networkName: 'dev'
-//             },
-//             enableLogging: false
-//           })
-//           await torus.login()
-//           web3Obj.setweb3(torus.provider)
-//         }
-//       }
-//   });
 
-// export default getWeb3;

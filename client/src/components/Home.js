@@ -1,5 +1,4 @@
 import React from 'react'
-// import Wallet from './Wallet'
 
 const Home = () => {
   return (
