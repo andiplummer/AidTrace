@@ -37,3 +37,31 @@ nav a {
   display: flex;
   flex-direction: row;
 }
+
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+  margin: 30px;
+}
+
+.grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 20px;
+  align-content: stretch;
+  height: 100%;
+}
+
+.card-image {
+  width: 90%;
+  height: 100px
+}
+
+#card {
+  width: 300px;
+  height: 300px;
+}
