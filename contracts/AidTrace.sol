@@ -39,7 +39,7 @@ contract DonationEvent {
     mapping(address => bool) public approvers;
     uint public approversCount;
 
-    modifier restricted() {
+    modifier onlyOwner() {
         require(msg.sender == manager);
         _;
     }
@@ -57,7 +57,7 @@ contract DonationEvent {
         emit LogContribute(approversCount);
     }
 
-    function createRequest(string memory description , uint value, address recipient) public restricted {
+    function createRequest(string memory description , uint value, address recipient) public onlyOwner {
         Request memory newRequest = Request({
            description: description,
            value: value,
