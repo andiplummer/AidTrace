@@ -13,13 +13,22 @@ nav {
   align-items: center;
   background-color: #1b2136;
   padding-right: 50px;
+  z-index: 10;
 }
 
-nav h1 {
+nav #header {
   color: white;
   margin-left: 50px;
   letter-spacing: 4px;
   font-size: 36px;
+  font-weight: 300;
+}
+
+nav h1 {
+  color: white;
+  margin-right: 50px;
+  letter-spacing: 2px;
+  font-size: 30px;
   font-weight: 300;
 }
 
@@ -39,8 +48,15 @@ h1 {
   text-decoration: none;
 }
 
+.events {
+  width: 100%;
+  left: 0;
+  margin: 0;
+}
+
 .home {
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   width: 100vw;
@@ -74,6 +90,129 @@ button:focus { outline:none }
   flex-direction: row;
 }
 
+#outerGrid {
+  width: 100%;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: stretch;
+  height: 80%;
+  padding-top: 150px;
+  z-index: 0;
+  width: 100%;
+}
+#avatar {
+    align-items: 'center';
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50px;
+  }
+
+.card-actions{
+  width: 100%;
+  align-items: center;
+  z-index: 0;
+}
+
+.buttons {
+  align-self: flex-start;
+    z-index: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.donationHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form input {
+  width: 250px;
+  margin: 10px;
+  height: 25px;
+}
+
+.form input:focus { outline:none }
+
+
+
+.donationHeader button {
+  width: 30px;
+  height: 30px;
+}
+
+.donateButton {
+  margin-right: 20px;
+  height: 30px;
+  width: 100px;
+  border-radius: 35px;
+}
+
+.up-vote {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 10px
+}
+
+.check-mark {
+  align-self: flex-start;
+}
+
+#vote-number {
+  margin: 1px;
+  padding: 1px;
+  border: 1px;
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+
+.path {
+  width: 15%;
+  align-self: flex-end;
+  padding: 30px;
+  margin: 30px;
+  border: 30px;
+}
+
+.ethereum-icon {
+   padding: 10px;
+   height: 20px;
+   width: 20px;
+   align-self: flex-end;
+}
+.card-header {
+  align-items: "center";
+  justify-content: "center";
+  display: flex;
+}
+#card {
+  width: 300px;
+  height: 300px;
+  border-radius: 35px;
+  margin: 20px;
+  align-self: "center";
+}
+
 .wallet button {
   background-color: #006BE8;
   border: none;
@@ -85,9 +224,21 @@ button:focus { outline:none }
   border-radius: 10px;
 }
 
+nav button {
+  background-color: #006BE8;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 175px;
+  font-size: 26px;
+  color: white;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
 .topDonations {
   width: 400px;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-right: 100px;
   margin-left: 30px;
   display: flex;
@@ -97,8 +248,14 @@ button:focus { outline:none }
   border-radius: 35px;
 }
 
+.topDonations p {
+  padding-right: 10px;
+}
+
 .topDonations h3 {
   color: black;
+  z-index: 3;
+  text-align: center;
 }
 
 .donationContainer {
@@ -106,6 +263,27 @@ button:focus { outline:none }
   flex-direction: row;
   justify-content: space-between;
 }
+<<<<<<< HEAD
 .createEventForm{
   padding-top: 250px;
+=======
+
+.donationHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chart {
+  margin-top: -50px;
+  z-index: -1;
+}
+
+.Contract {
+  padding-top: 150px;
+}
+
+.Contract p {
+  color: black;
+>>>>>>> 342802df7877ff2000bb7382510981cdaa0dcb8e
 }

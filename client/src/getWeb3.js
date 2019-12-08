@@ -32,5 +32,14 @@ const getWeb3 = () =>
         resolve(web3);
       }
     });
+<<<<<<< HEAD
   });
 export default getWeb3;
+=======
+    await torus.login();
+    web3Obj.setweb3(torus.provider);
+  }
+};
+
+export default web3Obj;
+>>>>>>> 342802df7877ff2000bb7382510981cdaa0dcb8e

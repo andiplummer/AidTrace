@@ -1,7 +1,12 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
 import getWeb3 from "../getWeb3";
 import AidTrace from "../contracts/AidTrace.json";
 import DonationEvent from "../contracts/DonationEvent.json";
+=======
+// import getWeb3 from "../getWeb3";
+// import AidTrace from "../contracts/AidTrace.json";
+>>>>>>> 342802df7877ff2000bb7382510981cdaa0dcb8e
 
 class CreateEventForm extends Component {
   constructor(props) {
@@ -17,18 +22,19 @@ class CreateEventForm extends Component {
       contractAid: null,
       contractDonate:null
     }
-    this.handleSubmit = this.handleSubmit.bind(this)
+    // this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount = async () => {
-      try {
-        // Get network provider and web3 instance.
-        const web3 = await getWeb3();
+    // componentDidMount = async () => {
+    //   try {
+    //     // Get network provider and web3 instance.
+    //     const web3 = await getWeb3();
 
-        // Use web3 to get the user's accounts.
-        const accounts = await web3.eth.getAccounts();
+    //     // Use web3 to get the user's accounts.
+    //     const accounts = await web3.eth.getAccounts();
 
+<<<<<<< HEAD
         // Get the contract instance.
         const networkId = await web3.eth.net.getId();
         const deployedNetwork = AidTrace.networks[networkId];
@@ -47,14 +53,26 @@ class CreateEventForm extends Component {
         // Set web3, accounts, and contract to the state.
         this.setState({ web3, accounts, contractAid: AidTraceinstance, contractDonate: DonationEventinstance});
         
+=======
+    //     // Get the contract instance.
+    //     const networkId = await web3.eth.net.getId();
+    //     const deployedNetwork = AidTrace.networks[networkId];
+    //     const instance = new web3.eth.Contract(
+    //       AidTrace.abi,
+    //       deployedNetwork && deployedNetwork.address,
+    //     );
 
-      } catch (error) {
-        alert(
-          `Failed to load web3, accounts, or contract.`,
-        );
-        console.error(error);
-      }
-    };
+    //     // Set web3, accounts, and contract to the state.
+    //     this.setState({ web3, accounts, contract: instance });
+>>>>>>> 342802df7877ff2000bb7382510981cdaa0dcb8e
+
+    //   } catch (error) {
+    //     alert(
+    //       `Failed to load web3, accounts, or contract.`,
+    //     );
+    //     console.error(error);
+    //   }
+    // };
 
   handleChange(event) {
     this.setState({
@@ -62,11 +80,12 @@ class CreateEventForm extends Component {
     });
   }
 
-  async handleSubmit(event) {
-    try {
-      event.preventDefault();
-      this.setState({message: 'Creating event...'})
+  // async handleSubmit(event) {
+  //   try {
+  //     event.preventDefault();
+  //     this.setState({message: 'Creating event...'})
 
+<<<<<<< HEAD
       // reminder: need to save description to backend
       // code gets stuck on creating event status but doesn't fail
       await this.state.contractAid.methods.createEvent(this.state.min, this.state.name).send({ from: this.state.accounts[0]});
@@ -91,6 +110,25 @@ class CreateEventForm extends Component {
       console.error(error)
     }
   }
+=======
+  //     // reminder: need to save description to backend
+  //     // code gets stuck on creating event status but doesn't fail
+  //     await this.state.contract.methods.createEvent(this.state.min, this.state.name).send({ from: this.state.accounts[0]});
+
+  //     this.setState({
+  //       min: '',
+  //       name: '',
+  //       addressDonor: '',
+  //       message: 'Event created!'
+  //     });
+  //   } catch (error) {
+  //     alert(
+  //       `Event creation failed.`,
+  //     );
+  //     console.error(error)
+  //   }
+  // }
+>>>>>>> 342802df7877ff2000bb7382510981cdaa0dcb8e
 
   render() {
     return (
