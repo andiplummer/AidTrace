@@ -1,77 +1,98 @@
-import React, { Component } from "react";
-import getWeb3 from "../getWeb3";
-import AidTrace from "../contracts/AidTrace.json";
-import SingleEvent from './SingleEvent'
+import React, { Component } from 'react';
+import getWeb3 from '../getWeb3';
+import AidTrace from '../contracts/AidTrace.json';
+import SingleEvent from './SingleEvent';
+// import Torus from "@toruslabs/torus-embed";
+// import Web3 from "web3";
+
+// const web3Obj = {
+//   web3: new Web3(),
+//   setweb3: function(provider) {
+//     const web3Inst = new Web3(provider)
+//     web3Obj.web3 = web3Inst
+//     sessionStorage.setItem('pageUsingTorus', true)
+//   },
+//   initialize: async function() {
+//     const torus = new Torus()
+//     await torus.init({
+//       network: {
+//         host: 'HTTP://127.0.0.1:7545',
+//         networkName: 'dev'
+//       },
+//       enableLogging: false
+//     })
+//     await torus.login()
+//     web3Obj.setweb3(torus.provider)
+//   }
+// }
 
 class Events extends Component {
-  constructor(){
-    super()
+  constructor() {
+    super();
     this.state = {
       web3: null,
-      // accounts: null,
+      accounts: null,
       contract: null,
-      events:[]
-    }
+      events: [],
+    };
+    // this.enableTorus = this.enableTorus.bind(this)
+    this.loadBlockchainData = this.loadBlockchainData.bind(this)
   }
 
-  async componentDidMount () {
+  // enableTorus = async () => {
+  //   try {
+  //     await web3Obj.initialize()
+  //     this.setState({web3: web3Obj})
+  //     console.log('this.state.web3 after enableTorus', this.state.web3)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  // }
+
+  async componentDidMount() {
+    this.loadBlockchainData()
+  }
+
+  async loadBlockchainData() {
     try {
       // Get network provider and web3 instance.
       const web3 = await getWeb3();
 
+      // get web3 instance made with Torus provider
+      // this.enableTorus()
+
+      // const web3 = this.state.web3
+
       // Use web3 to get the user's accounts.
-      // const accounts = await web3.eth.getAccounts();
+      const accounts = await web3.eth.getAccounts();
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = AidTrace.networks[networkId];
       const instance = new web3.eth.Contract(
         AidTrace.abi,
-        deployedNetwork && deployedNetwork.address,
+        deployedNetwork && deployedNetwork.address
       );
 
       // Set web3, accounts, and contract to the state.
       this.setState({ web3, contract: instance });
 
       // Set list of existing events to the state.
-      for (let i = 0; i < events; i++) {
-        const event = await instance.methods.events(i).call()
+      const eventsList = await this.state.contract.methods.deployedEvents().call();
+
+      for (var i = 1; i <= eventsList.length; i++) {
+        const event = await this.state.contract.methods.deployedEvents(i).call();
         this.setState({
-          events: [...this.state.events, event]
-        })
+          events: [...this.state.events, event],
+        });
       }
 
-      // with test object instead of actual contract
-
-      // const eventsListTest = this.state.contractTest.events.reduce((accum, event) => {
-      //   accum.push(event)
-      //   return accum
-      // }, [])
-
-      console.log('events on test obj', this.state.contractTest.events)
-
-      const eventsListTest = []
-      for (let i = 0; i < this.state.contractTest.events; i++) {
-        const event = this.state.contractTest.events[i]
-        eventsListTest.push(event)
-      }
-
-
-
-
-      console.log('eventsListTEst', eventsListTest)
-
-      this.setState({events: eventsListTest})
-
-      console.log('this.state.events', this.state.events)
-
+      console.log('this.state.events', this.state.events);
     } catch (error) {
-      alert(
-        `Failed to load web3, accounts, or contract.`,
-      );
+      alert(`Failed to load web3, accounts, or contract.`);
       console.error(error);
     }
-  };
+  }
 
   render() {
     return (
@@ -87,7 +108,6 @@ class Events extends Component {
       </div>
     );
   }
-
 }
 
-export default Events
+export default Events;

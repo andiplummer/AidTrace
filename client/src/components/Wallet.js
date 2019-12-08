@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './Nav'
+// import Nav from './Nav'
 import Torus from "@toruslabs/torus-embed";
 import Web3 from "web3";
 
@@ -55,20 +55,20 @@ class Wallet extends React.Component {
 
   render() {
     return (
-      <div class="wallet">
+      <div className="wallet">
           {
-            this.state.account ? 
-            <div class="accountInfo">
+            this.state.account ?
+            <div className="accountInfo">
               <div>Account: {this.state.account.slice(0, 5)}</div>
               <div>Balance: {this.state.balance}</div>
             </div>
-          
-            : 
-            
+
+            :
+
             <div>
               <button onClick={this.enableTorus}>Login</button>
             </div>
-          }      
+          }
       </div>
     )
   }
