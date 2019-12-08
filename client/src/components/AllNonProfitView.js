@@ -6,6 +6,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
+import { BrowserRouter as Router, Link } from 'react-router-dom'
+import { Icon, InlineIcon } from '@iconify/react';
+import ethereumIcon from '@iconify/icons-fa-brands/ethereum'
+import chevronUp from '@iconify/icons-mdi/chevron-up';
+import chevronDown from '@iconify/icons-mdi/chevron-down';
+import checkCircleOutline from '@iconify/icons-mdi/check-circle-outline';
+
 
 const posts = [
 
@@ -77,13 +84,18 @@ let [votes, setVotes] = React.useState(0)
                   <Typography component="p">{post.excerpt}</Typography>
                 </CardContent>
               </CardActionArea>
-              <CardActions>
-                <Button size="small" color="primary">
-                  {votes}
-                </Button>
-                <Button size="small" color="primary">
-                  Learn More
-                </Button>
+              <CardActions class="card-actions">
+                <div class="buttons">
+                  <div class="up-vote">
+                    <Icon icon={chevronUp}/>
+                    <div size="small" color="primary" id="vote-number">
+                      {votes}
+                    </div>
+                    <Icon icon={chevronDown} />
+                  </div>
+                </div>
+                <Icon icon={checkCircleOutline} class="check-mark"/>
+                <Icon icon={ethereumIcon} class="ethereum-icon"/>
               </CardActions>
             </Card>
           </Grid>

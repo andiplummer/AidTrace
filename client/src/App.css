@@ -60,7 +60,48 @@ nav a {
   width: 90%;
   height: 100px
 }
+.card-actions{
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  width: 100%;
+  align-items: center;
+}
+.buttons {
+  align-self: flex-start;
+}
+.up-vote {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  padding: 10px
+}
 
+.check-mark {
+  align-self: flex-start;
+}
+#vote-number {
+  margin: 1px;
+  padding: 1px;
+  border: 1px;
+  font-size: 1rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+}
+.path {
+  width: 15%;
+  align-self: flex-end;
+  padding: 30px;
+  margin: 30px;
+  border: 30px;
+}
+.ethereum-icon {
+   padding: 10px;
+   height: 20px;
+   width: 20px;
+}
 #card {
   width: 300px;
   height: 300px;
