@@ -22,4 +22,5 @@ const web3Obj = {
   }
 };
 
-export default web3Obj;
+export default getWeb3;
+

@@ -7,6 +7,7 @@ import SingleEvent from './components/SingleEvent';
 import Donate from './components/Donate';
 import Nav from './components/Nav'
 import AllNonProfitView from './components/AllNonProfitView'
+import "./App.css";
 
 const Routes = () => {
   return (
