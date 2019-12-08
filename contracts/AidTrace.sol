@@ -2,12 +2,12 @@ pragma solidity ^0.5.0;
 
 contract AidTrace {
 
-  
-
-   DonationEvent[] public deployedEvents;
+    event LogEventCreated(uint minimum, string name);
+    DonationEvent[] public deployedEvents;
 
     function createEvent(uint minimum, string memory name) public {
-       DonationEvent newDonationEvent = new DonationEvent(minimum, name,msg.sender);
+       DonationEvent newDonationEvent = new DonationEvent(minimum, name, msg.sender);
+       emit LogEventCreated(minimum, name);
         deployedEvents.push(newDonationEvent);
     }
 
@@ -44,7 +44,7 @@ contract DonationEvent {
         _;
     }
 
-    constructor(uint minimum, string memory name, address creator) public {
+    constructor(uint minimum, string memory name,address creator) public {
         manager = creator;
         minimumContribution = minimum;
     }
@@ -57,7 +57,9 @@ contract DonationEvent {
         emit LogContribute(approversCount);
     }
 
-    function createRequest(string memory description , uint value, address recipient) public onlyOwner {
+    function voteForEvent() public 
+
+    function createRequest(string memory description , uint value) public onlyOwner {
         Request memory newRequest = Request({
            description: description,
            value: value,
@@ -65,7 +67,7 @@ contract DonationEvent {
            complete: false,
            approvalCount: 0
         });
-        emit LogRequestCreated(description,value,recipient);
+        emit LogRequestCreated(description,value, newRequest.recipient);
         requests.push(newRequest);
     }
 
@@ -80,10 +82,10 @@ contract DonationEvent {
         emit LogRequestApproved(id, request.approvalCount);
     }
 
-    function finalizeRequest(uint id) public restricted {
+    function finalizeRequest(uint id) public onlyOwner {
         Request storage request = requests[id];
 
-        require(request.approvalCount > (approversCount / 2));
+        require(request.approvalCount > (approversCount / 3));
         require(!request.complete);
         
         msg.sender.transfer(request.value);
