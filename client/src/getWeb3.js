@@ -22,10 +22,4 @@ const web3Obj = {
   }
 };
 
-<<<<<<< HEAD
-export default getWeb3;
-
-
-=======
 export default web3Obj;
->>>>>>> master

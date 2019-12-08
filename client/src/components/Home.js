@@ -1,6 +1,6 @@
 import React from 'react'
 import TopDonations from './TopDonations'
-import TrendingReliefs from './TrendingReliefs';
+import TrendingReliefs from './TrendingReliefs'
 
 const Home = () => {
   return (
