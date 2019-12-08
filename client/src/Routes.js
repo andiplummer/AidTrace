@@ -5,15 +5,15 @@ import CreateEventForm from './components/CreateEventForm';
 import Events from './components/Events';
 import SingleEvent from './components/SingleEvent';
 import Donate from './components/Donate';
+import Nav from './components/Nav'
 
 const Routes = () => {
   return (
     <Router>
       <div id="root">
+      <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/login" />
-          <Route path="/signup" />
           <Route path="/donorsignup" />
           <Route path="/nonprofitsignup" />
           <Route path="/create-event" component={CreateEventForm}/>
