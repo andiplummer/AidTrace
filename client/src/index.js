@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Routes from './Routes';
 import { BrowserRouter as Router } from 'react-router-dom';
-// import Nav from './components/Nav'
 
 ReactDOM.render(
   <Router>
