@@ -33,6 +33,16 @@ class Wallet extends React.Component {
     }
   }
 
+  componentDidMount() {
+    const isTorus = sessionStorage.getItem('pageUsingTorus')
+
+    if (isTorus) {
+      web3Obj.initialize().then(() => {
+        this.setStateInfo()
+      })
+    }
+  }
+
   setStateInfo() {
     web3Obj.web3.eth.getAccounts().then(accounts => {
       this.setState({ account: accounts[0] })
@@ -59,8 +69,8 @@ class Wallet extends React.Component {
           {
             this.state.account ? 
             <div class="accountInfo">
-              <div>Account: {this.state.account.slice(0, 5)}</div>
-              <div>Balance: {this.state.balance}</div>
+              <p>Account: {this.state.account.slice(0, 5)}</p>
+              <p>Balance: {this.state.balance}</p>
             </div>
           
             : 
