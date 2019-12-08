@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import getWeb3 from "../getWeb3";
 import AidTrace from "../contracts/AidTrace.json";
+import DonationEvent from "../contracts/DonationEvent.json";
 
 class CreateEventForm extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class CreateEventForm extends Component {
       addressDonor: '',
       web3: null,
       accounts: null,
-      contract: null
+      contractAid: null,
+      contractDonate:null
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
@@ -30,13 +32,21 @@ class CreateEventForm extends Component {
         // Get the contract instance.
         const networkId = await web3.eth.net.getId();
         const deployedNetwork = AidTrace.networks[networkId];
-        const instance = new web3.eth.Contract(
+        const AidTraceinstance = new web3.eth.Contract(
           AidTrace.abi,
           deployedNetwork && deployedNetwork.address,
         );
+        const DonationEventinstance = new web3.eth.Contract(
+          DonationEvent.abi,
+          deployedNetwork && deployedNetwork.address,
+        );
+        
 
+        console.log("AidTrace",AidTraceinstance)
+        console.log("DonationEvent",DonationEventinstance)
         // Set web3, accounts, and contract to the state.
-        this.setState({ web3, accounts, contract: instance });
+        this.setState({ web3, accounts, contractAid: AidTraceinstance, contractDonate: DonationEventinstance});
+        
 
       } catch (error) {
         alert(
@@ -59,8 +69,15 @@ class CreateEventForm extends Component {
 
       // reminder: need to save description to backend
       // code gets stuck on creating event status but doesn't fail
-      await this.state.contract.methods.createEvent(this.state.min, this.state.name).send({ from: this.state.accounts[0]});
+      await this.state.contractAid.methods.createEvent(this.state.min, this.state.name).send({ from: this.state.accounts[0]});
+      
+      const logs = await this.state.contractAid.logs[1].event 
 
+
+
+      console.log("events",logs)
+      
+     console.log("methods",this.state.accounts[0])
       this.setState({
         min: '',
         name: '',
@@ -79,6 +96,7 @@ class CreateEventForm extends Component {
     return (
       <div>
       <div className="Contract">
+        <div className="createEventForm">
         <p>Create an event</p>
       <form onSubmit={this.handleSubmit}>
         <label>
@@ -115,6 +133,7 @@ class CreateEventForm extends Component {
       </form>
       <div>
         <p>Even creation status: {this.state.message}</p>
+      </div>
       </div>
       </div>
       </div>

@@ -106,3 +106,6 @@ button:focus { outline:none }
   flex-direction: row;
   justify-content: space-between;
 }
+.createEventForm{
+  padding-top: 250px;
+}

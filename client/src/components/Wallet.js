@@ -11,40 +11,40 @@ class Wallet extends React.Component {
   }
 
   componentDidMount() {
-    const isTorus = sessionStorage.getItem('pageUsingTorus')
+  //   const isTorus = sessionStorage.getItem('pageUsingTorus')
 
-    if (isTorus) {
-      web3Obj.initialize().then(() => {
-        this.setStateInfo()
-      })
-    }
-  }
+  //   if (isTorus) {
+  //     web3Obj.initialize().then(() => {
+  //       this.setStateInfo()
+  //     })
+  //   }
+  // }
 
-  setStateInfo() {
-    web3Obj.web3.eth.getAccounts().then(accounts => {
-      this.setState({ account: accounts[0] })
-      web3Obj.web3.eth.getBalance(accounts[0]).then(balance => {
-        const balanceInEther = web3Obj.web3.utils.fromWei(balance)
-        this.setState({ balance: balanceInEther + ' ETH' })
-      })
-    })
-  }
+  // setStateInfo() {
+  //   web3Obj.web3.eth.getAccounts().then(accounts => {
+  //     this.setState({ account: accounts[0] })
+  //     web3Obj.web3.eth.getBalance(accounts[0]).then(balance => {
+  //       const balanceInEther = web3Obj.web3.utils.fromWei(balance)
+  //       this.setState({ balance: balanceInEther + ' ETH' })
+  //     })
+  //   })
+  // }
 
-  enableTorus = async () => {
-    try {
-      await web3Obj.initialize()
-      this.setStateInfo()
-      console.log(this.state)
-    } catch (error) {
-      console.error(error)
-    }
+  // enableTorus = async () => {
+  //   try {
+  //     await web3Obj.initialize()
+  //     this.setStateInfo()
+  //     console.log(this.state)
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
   }
 
   render() {
     return (
       <div className="wallet">
           {
-<<<<<<< HEAD
+
             this.state.account ?
             <div className="accountInfo">
               <div>Account: {this.state.account.slice(0, 5)}</div>
@@ -53,7 +53,7 @@ class Wallet extends React.Component {
 
             :
 
-=======
+
             this.state.account ?
 
             <div class="accountInfo">
@@ -63,7 +63,7 @@ class Wallet extends React.Component {
 
             :
 
->>>>>>> master
+
             <div>
               <button onClick={this.enableTorus}>Login</button>
             </div>

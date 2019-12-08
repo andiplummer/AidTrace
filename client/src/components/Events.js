@@ -3,6 +3,7 @@ import getWeb3 from '../getWeb3';
 import AidTrace from '../contracts/AidTrace.json';
 import SingleEvent from './SingleEvent';
 import CreateEventForm from './CreateEventForm'
+import DonationEvent from "../contracts/DonationEvent.json";
 // import Torus from "@toruslabs/torus-embed";
 // import Web3 from "web3";
 
@@ -33,31 +34,45 @@ class Events extends Component {
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
       const deployedNetwork = AidTrace.networks[networkId];
-      const instance = new web3.eth.Contract(
-        AidTrace.abi,
-        deployedNetwork && deployedNetwork.address
-      );
-
+       const AidTraceinstance = new web3.eth.Contract(
+          AidTrace.abi,
+          deployedNetwork && deployedNetwork.address,
+        );
+        const DonationEventinstance = new web3.eth.Contract(
+          DonationEvent.abi,
+          deployedNetwork && deployedNetwork.address,
+        );
       // Set web3, accounts, and contract to the state.
-      this.setState({ web3, contract: instance, accounts });
+      this.setState({ web3, accounts, contractAid: AidTraceinstance, contractDonate: DonationEventinstance});
 
       // Set list of existing events to the state.
       // error now because no events created yet so nothing in deployedEvents array yet
       // need to fix create event form first
-      const eventsList = await this.state.contract.methods
-        .deployedEvents()
-        .call();
+      // const eventsList = await this.state.contract.methods
+      //   .getSummary()
+      //   .call();
+
+       const logs = await this.state.contractAid.logs[0].event 
+
+
+
+        console.log("events",logs)
 
       // need to add in if event msg.sender address = company logged in, then render that company's events only
-      for (var i = 1; i <= eventsList.length; i++) {
-        const event = await this.state.contract.methods
-          .getDeployedEvents(i)
-          .call();
-        // if(event.)
-        this.setState({
-          events: [...this.state.events, event],
-        });
-      }
+
+      // console.log("events",this.state.contract.methods
+      // .getDeployedEvents().call())
+
+
+      // for (var i = 1; i <= eventsList.length; i++) {
+      //   const event = await this.state.contract.methods
+      //     .getDeployedEvents(i)
+      //     .call();
+      //   // if(event.)
+      //   this.setState({
+      //     events: [...this.state.events, event],
+      //   });
+      // }
 
       console.log('this.state.events', this.state.events);
     } catch (error) {
