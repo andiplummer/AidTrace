@@ -3,7 +3,7 @@ pragma solidity ^0.5.0;
 contract AidTrace {
 
   
-    
+
    DonationEvent[] public deployedEvents;
 
     function createEvent(uint minimum, string memory name) public {

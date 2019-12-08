@@ -1,4 +1,4 @@
-import React, { useState }from "react";
+import React, { useState } from "react";
 import { Grid, Paper, Typography, Avatar } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
@@ -6,13 +6,13 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-import { BrowserRouter as Router, Link } from 'react-router-dom'
-import { Icon, InlineIcon } from '@iconify/react';
-import ethereumIcon from '@iconify/icons-fa-brands/ethereum'
-import chevronUp from '@iconify/icons-mdi/chevron-up';
-import chevronDown from '@iconify/icons-mdi/chevron-down';
-import checkCircleOutline from '@iconify/icons-mdi/check-circle-outline';
-
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Icon, InlineIcon } from "@iconify/react";
+import ethereumIcon from "@iconify/icons-fa-brands/ethereum";
+import chevronUp from "@iconify/icons-mdi/chevron-up";
+import chevronDown from "@iconify/icons-mdi/chevron-down";
+import checkCircleOutline from "@iconify/icons-mdi/check-circle-outline";
+import Modal from 'react-modal';
 
 let posts = [
 
@@ -33,7 +33,7 @@ let posts = [
   },
 
   {
-    id: 3, 
+    id: 3,
     title: "Direct Releif",
     excerpt: "Direct Relief is a humanitarian aid organization, active in all 50 states and more than 80 countries, with a mission to improve the health and lives of people affected by poverty or emergencies – without regard to politics, religion, or ability to pay",
     image: "https://i1.wp.com/www.directrelief.org/wp-content/uploads/Direct-Relief-Logo-Square-Full.png?w=1192&crop=0%2C0px%2C100%2C1189px&ssl=1",
@@ -63,10 +63,14 @@ let posts = [
     image: "https://bloximages.newyork1.vip.townnews.com/mcdowellnews.com/content/tncms/assets/v3/editorial/2/a6/2a662eaa-a34e-11e9-8752-1f55e33a45f3/5d26453489900.image.jpg?resize=400%2C400",
     votes: 0
   }
-]
+];
 
+class AllNonProfitView extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-function AllNonProfitView(props) {
+render(){
   return (
     <div class="grid-container">
         {posts.map(post => (
@@ -93,14 +97,16 @@ function AllNonProfitView(props) {
                     return (post.votes--)
                   }}/>
                   </div>
+                  <Icon icon={chevronDown} />
                 </div>
                 <Icon icon={checkCircleOutline} class="check-mark" />
                 <Icon icon={ethereumIcon} class="ethereum-icon" />
               </CardActions>
             </Card>
         ))}
-    </div>
-  )
+      </div>
+    );
+  }
 }
 
-export default AllNonProfitView
+export default AllNonProfitView;

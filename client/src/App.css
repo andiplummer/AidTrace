@@ -16,11 +16,19 @@ nav {
   z-index: 10;
 }
 
-nav h1 {
+nav #header {
   color: white;
   margin-left: 50px;
   letter-spacing: 4px;
   font-size: 36px;
+  font-weight: 300;
+}
+
+nav h1 {
+  color: white;
+  margin-right: 50px;
+  letter-spacing: 2px;
+  font-size: 30px;
   font-weight: 300;
 }
 
@@ -40,8 +48,15 @@ h1 {
   text-decoration: none;
 }
 
+.events {
+  width: 100%;
+  left: 0;
+  margin: 0;
+}
+
 .home {
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   width: 100vw;
@@ -86,9 +101,9 @@ button:focus { outline:none }
   align-content: flex-start;
   align-items: stretch;
   height: 80%;
-  margin-left: 10%;
   padding-top: 150px;
   z-index: 0;
+  width: 100%;
 }
 #avatar {
     align-items: 'center';
@@ -107,7 +122,46 @@ button:focus { outline:none }
 .buttons {
   align-self: flex-start;
     z-index: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
+}
+
+.donationHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form input {
+  width: 250px;
+  margin: 10px;
+  height: 25px;
+}
+
+.form input:focus { outline:none }
+
+
+
+.donationHeader button {
+  width: 30px;
+  height: 30px;
+}
+
+.donateButton {
+  margin-right: 20px;
+  height: 30px;
+  width: 100px;
+  border-radius: 35px;
 }
 
 .up-vote {
@@ -170,9 +224,21 @@ button:focus { outline:none }
   border-radius: 10px;
 }
 
+nav button {
+  background-color: #006BE8;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 175px;
+  font-size: 26px;
+  color: white;
+  border-radius: 10px;
+  margin-right: 50px;
+}
+
 .topDonations {
   width: 400px;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-right: 100px;
   margin-left: 30px;
   display: flex;
@@ -182,12 +248,37 @@ button:focus { outline:none }
   border-radius: 35px;
 }
 
+.topDonations p {
+  padding-right: 10px;
+}
+
 .topDonations h3 {
   color: black;
+  z-index: 3;
+  text-align: center;
 }
 
 .donationContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.donationHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.chart {
+  margin-top: -50px;
+  z-index: -1;
+}
+
+.Contract {
+  padding-top: 150px;
+}
+
+.Contract p {
+  color: black;
 }
