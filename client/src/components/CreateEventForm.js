@@ -11,6 +11,7 @@ class CreateEventForm extends Component {
       min: '',
       desc: '',
       message: 'Please enter and submit event details.',
+      addressDonor: '',
       web3: null,
       accounts: null,
       contract: null
@@ -57,15 +58,16 @@ class CreateEventForm extends Component {
       event.preventDefault();
       this.setState({message: 'Creating event...'})
 
-      await this.state.contract.methods.event(this.state.min, this.state.accounts[0], this.state.name).send({ from: this.state.accounts[0]});
+      await this.state.contract.methods.createEvent(this.state.min, this.state.name, this.state.accounts[0]).send({ from: this.state.accounts[0]});
       this.setState({
-        name: '',
         min: '',
+        name: '',
+        addressDonor: '',
         message: 'Event created!'
       });
     } catch (error) {
       alert(
-        `Event donation failed.`,
+        `Event creation failed.`,
       );
       console.error(error)
     }
@@ -86,16 +88,6 @@ class CreateEventForm extends Component {
             value={this.state.name}
           />
         </label>
-{/*
-        <label>
-          Charity's address:
-          <input
-            type="text"
-            name="address"
-            onChange={this.handleChange}
-            value={this.state.address}
-          />
-        </label> */}
 
         <label>
           Minimum contribution (ETH):
