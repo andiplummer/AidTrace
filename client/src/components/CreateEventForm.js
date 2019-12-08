@@ -7,9 +7,8 @@ class CreateEventForm extends Component {
     super(props)
     this.state = {
       name: '',
-      address: '', // message sender's address
       min: '',
-      desc: '',
+      desc: '', // do we want to add a description of the event?
       message: 'Please enter and submit event details.',
       addressDonor: '',
       web3: null,
@@ -58,7 +57,10 @@ class CreateEventForm extends Component {
       event.preventDefault();
       this.setState({message: 'Creating event...'})
 
-      await this.state.contract.methods.createEvent(this.state.min, this.state.name, this.state.accounts[0]).send({ from: this.state.accounts[0]});
+      // reminder: need to save description to backend
+      // code gets stuck on creating event status but doesn't fail
+      await this.state.contract.methods.createEvent(this.state.min, this.state.name).send({ from: this.state.accounts[0]});
+
       this.setState({
         min: '',
         name: '',
@@ -90,6 +92,16 @@ class CreateEventForm extends Component {
         </label>
 
         <label>
+          Description:
+          <input
+            type="text"
+            name="desc"
+            onChange={this.handleChange}
+            value={this.state.desc}
+          />
+        </label>
+
+        <label>
           Minimum contribution (ETH):
           <input
             type="text"
@@ -99,10 +111,10 @@ class CreateEventForm extends Component {
           />
         </label>
 
-        <button className="btn" type="submit">Donate</button>
+        <button className="btn" type="submit">Submit</button>
       </form>
       <div>
-        <p className="italic">Even creation status: {this.state.message}</p>
+        <p>Even creation status: {this.state.message}</p>
       </div>
       </div>
       </div>
