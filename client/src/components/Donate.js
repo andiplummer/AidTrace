@@ -57,7 +57,8 @@ class Donate extends Component {
       event.preventDefault();
       this.setState({message: 'Waiting on transaction success...'})
 
-      await this.state.contract.methods.contribute(this.state.address).send({ from: this.state.accounts[0], value: this.state.web3.utils.toWei(this.state.ETH, 'ether')});
+      // how to access contribute method in contract?
+      await this.state.contract.methods.contribute().send({ from: this.state.accounts[0], value: this.state.web3.utils.toWei(this.state.ETH, 'ether')});
       this.setState({
         ETH: '',
         address: '',

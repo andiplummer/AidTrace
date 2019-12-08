@@ -75,19 +75,24 @@ class Events extends Component {
       );
 
       // Set web3, accounts, and contract to the state.
-      this.setState({ web3, contract: instance });
+      this.setState({ web3, contract: instance, accounts });
 
       // Set list of existing events to the state.
+      // error now because no events created yet so nothing in deployedEvents array yet
+      // need to fix create event form first
       const eventsList = await this.state.contract.methods.deployedEvents().call();
 
+      // need to add in if event msg.sender address = company logged in, then render that company's events only
       for (var i = 1; i <= eventsList.length; i++) {
-        const event = await this.state.contract.methods.deployedEvents(i).call();
+        const event = await this.state.contract.methods.getDeployedEvents(i).call();
+        // if(event.)
         this.setState({
           events: [...this.state.events, event],
         });
       }
 
       console.log('this.state.events', this.state.events);
+
     } catch (error) {
       alert(`Failed to load web3, accounts, or contract.`);
       console.error(error);
@@ -101,7 +106,7 @@ class Events extends Component {
         {this.state.events.map((event, idx) => {
           return (
             <div key={idx}>
-              <SingleEvent key={idx} event={this.state.events} />
+              <SingleEvent key={idx} event={event} />
             </div>
           );
         })}

@@ -7,17 +7,27 @@ const SingleEvent = (props) => {
 
   return (
     <div>
-      {props.events.map((event, idx) => {
-        return (
-          <div key={idx}>
-            <h2>{event.name}</h2>
-            <p>Minimum donation required: {event.min}</p>
-            <p>Total raised (ETH): </p>
-          </div>
-        );
-      })}
+      <h2>Event name: {props.event.name}</h2>
+      <p>Minimum donation required: {props.event.min}</p>
+      <p>Description: </p>
+      <p>Total raised (ETH): </p>
     </div>
-  );
+  )
 };
+
+//   return (
+//     <div>
+//       {props.events.map((event, idx) => {
+//         return (
+//           <div key={idx}>
+//             <h2>{event.name}</h2>
+//             <p>Minimum donation required: {event.min}</p>
+//             <p>Total raised (ETH): </p>
+//           </div>
+//         );
+//       })}
+//     </div>
+//   );
+// };
 
 export default SingleEvent;

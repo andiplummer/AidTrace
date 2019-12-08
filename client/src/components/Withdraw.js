@@ -57,8 +57,8 @@ class Withdraw extends Component {
       event.preventDefault()
 
       this.setState({message: 'Waiting on transaction success...'})
-
-      await this.state.contract.methods.withdraw(this.state.addressCharity).send({ from: this.state.addressCharity});
+      // does this need to be looping over all events, get the specific event instance.finalizeRequest?
+      await this.state.contract.methods.finalizeRequest(this.state.addressCharity).send({ from: this.state.addressCharity});
 
       this.setState({
         name: '',
