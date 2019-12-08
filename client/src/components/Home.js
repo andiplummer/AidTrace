@@ -1,4 +1,6 @@
 import React from 'react'
+import Wallet from './Wallet'
+import ReactModal from 'react-modal'
 import TopDonations from './TopDonations'
 import TrendingReliefs from './TrendingReliefs';
 

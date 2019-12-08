@@ -6,6 +6,7 @@ import Events from './components/Events';
 import SingleEvent from './components/SingleEvent';
 import Donate from './components/Donate';
 import Nav from './components/Nav'
+import AllNonProfitView from './components/AllNonProfitView'
 import "./App.css";
 
 const Routes = () => {
@@ -15,6 +16,7 @@ const Routes = () => {
       <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact ="/nonprofits" component={AllNonProfitView} />
           <Route path="/donorsignup" />
           <Route path="/nonprofitsignup" />
           <Route path="/create-event" component={CreateEventForm}/>

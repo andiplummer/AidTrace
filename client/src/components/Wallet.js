@@ -44,26 +44,19 @@ class Wallet extends React.Component {
     return (
       <div className="wallet">
           {
-<<<<<<< HEAD
-            this.state.account ?
-            <div className="accountInfo">
-              <div>Account: {this.state.account.slice(0, 5)}</div>
-              <div>Balance: {this.state.balance}</div>
-            </div>
-
-            :
-
-=======
             this.state.account ?
 
             <div class="accountInfo">
               <p>Account: {this.state.account.slice(0, 5)}</p>
               <p>Balance: {this.state.balance}</p>
             </div>
-
             :
-
->>>>>>> master
+            this.state.account ?
+            <div class="accountInfo">
+              <p>Account: {this.state.account.slice(0, 5)}</p>
+              <p>Balance: {this.state.balance}</p>
+            </div>
+            :
             <div>
               <button onClick={this.enableTorus}>Login</button>
             </div>
