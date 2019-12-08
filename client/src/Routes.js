@@ -22,7 +22,7 @@ const Routes = () => {
           <Route path="/create-event" component={CreateEventForm}/>
           <Route path="/event" component={SingleEvent}/>
           <Route path="/events" component={Events}/>
-          <Route path="/donate" component={Donate}/>
+          <Route exact path="/donate" component={Donate}/>
           <Route path="/Withdraw" component={Donate}/>
           <Route path="/transactionsummary" />
           <Route path="/singleevent" />
